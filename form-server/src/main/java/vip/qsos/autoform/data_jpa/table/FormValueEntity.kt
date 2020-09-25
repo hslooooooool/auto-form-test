@@ -54,7 +54,6 @@ class FormValueEntity : AbsTable {
     @ApiModelProperty(value = "valueOfJson", required = false)
     var valueOfJson: String? = null
 
-    @NotNull
     @Transient
     var value: AbsValue? = null
         set(value) {

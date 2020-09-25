@@ -59,7 +59,7 @@ class FormEntity {
 
     @OneToMany(
             targetEntity = FormItemEntity::class,
-            cascade = [CascadeType.REMOVE],
+            cascade = [CascadeType.ALL],
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     @JoinColumn(name = "form_id", referencedColumnName = "id")

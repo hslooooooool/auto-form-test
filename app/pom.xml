@@ -11,7 +11,7 @@
 	
 	<artifactId>app</artifactId>
 	<packaging>jar</packaging>
-	<description>消息服务APP</description>
+	<description>智能表单服务APP</description>
 	
 	<dependencies>
 		<dependency>
