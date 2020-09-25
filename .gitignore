@@ -1,0 +1,16 @@
+/.idea/
+/out/
+/app/target/
+/im-sdk-netty/jars/
+*.iml
+app/app.iml
+im-netty-server.iml
+im-lib/target/
+im-server/target/
+app/lib/
+im-sdk-netty/target/
+/.settings/
+/.vscode/
+.project
+file-server/src/test/
+file-server/target/
