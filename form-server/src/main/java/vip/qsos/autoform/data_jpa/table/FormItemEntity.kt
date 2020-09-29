@@ -1,5 +1,6 @@
 package vip.qsos.autoform.data_jpa.table
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import java.util.*
@@ -93,6 +94,7 @@ class FormItemEntity : AbsTable {
     @ApiModelProperty(value = "limitFormat", required = false)
     var limitFormat: String? = null
 
+    @JsonIgnore
     @ManyToOne(targetEntity = FormEntity::class, fetch = FetchType.LAZY)
     @JoinColumn(name = "form_id", referencedColumnName = "id")
     var form: FormEntity? = null
@@ -106,6 +108,7 @@ class FormItemEntity : AbsTable {
     var formValues: List<FormValueEntity> = arrayListOf()
 
     @Transient
+    @JsonIgnore
     var formValue: FormValueEntity? = null
         get() = if (formValues.isEmpty()) null else formValues[0]
         set(value) {
@@ -122,6 +125,7 @@ class FormItemEntity : AbsTable {
         }
 
     @Transient
+    @JsonIgnore
     var limitTypeList: List<String>? = null
         get() {
             if (field == null) {

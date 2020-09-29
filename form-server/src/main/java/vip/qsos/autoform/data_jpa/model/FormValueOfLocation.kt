@@ -14,7 +14,7 @@ data class FormValueOfLocation constructor(
         var locX: Double,
         var locY: Double
 ) : AbsValue {
-
+    override val valueType: Int = 6
     override fun json(): String {
         return Gson().toJson(this)
     }

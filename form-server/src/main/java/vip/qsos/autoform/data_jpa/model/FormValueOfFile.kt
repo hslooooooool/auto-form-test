@@ -21,7 +21,7 @@ data class FormValueOfFile(
         var fileUrl: String? = filePath,
         var fileCover: String? = filePath ?: fileUrl
 ) : AbsValue {
-
+    override val valueType: Int = 5
     override fun json(): String {
         return Gson().toJson(this)
     }

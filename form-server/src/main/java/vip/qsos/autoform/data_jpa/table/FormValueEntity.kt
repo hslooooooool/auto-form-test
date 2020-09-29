@@ -1,9 +1,10 @@
 package vip.qsos.autoform.data_jpa.table
 
-import com.google.gson.Gson
+import com.fasterxml.jackson.annotation.JsonIgnore
 import io.swagger.annotations.ApiModel
 import io.swagger.annotations.ApiModelProperty
 import vip.qsos.autoform.model.db.AbsValue
+import vip.qsos.autoform.utils.FormTransUtils
 import javax.persistence.*
 import javax.validation.constraints.NotNull
 
@@ -23,12 +24,13 @@ class FormValueEntity : AbsTable {
             limitFormat: String? = null,
             editable: Boolean = true,
             position: Int = 1,
-            value: AbsValue? = null
+            value: AbsValue
     ) {
         this.limitFormat = limitFormat
         this.editable = editable
         this.position = position
         this.value = value
+        this.valueType = value.valueType
     }
 
     @Id
@@ -49,20 +51,39 @@ class FormValueEntity : AbsTable {
     @ApiModelProperty(value = "position", required = false)
     var position: Int = 1
 
+    @Column(name = "value_type", unique = false, nullable = false, length = 32)
+    @ApiModelProperty(value = "valueType", required = false)
+    var valueType: Int = 0
+
     @NotNull
-    @Column(name = "value", unique = false, nullable = false, length = 255)
-    @ApiModelProperty(value = "valueOfJson", required = false)
-    var valueOfJson: String? = null
+    @Column(name = "form_value", unique = false, nullable = false, length = 255)
+    @ApiModelProperty(value = "formValue", required = false)
+    var formValue: String? = null
 
     @Transient
+    @JsonIgnore
+    @ApiModelProperty(value = "value", required = false)
     var value: AbsValue? = null
         set(value) {
             field = value
             field?.let {
-                valueOfJson = Gson().toJson(it)
+                this.formValue = FormTransUtils.transValue(it)
+            }
+        }
+        get() {
+            return when {
+                field != null -> {
+                    field
+                }
+                formValue != null -> {
+                    field = FormTransUtils.tansValue(valueType, formValue!!)
+                    field
+                }
+                else -> null
             }
         }
 
+    @JsonIgnore
     @ManyToOne(targetEntity = FormItemEntity::class, fetch = FetchType.LAZY)
     @JoinColumn(name = "form_value_id", referencedColumnName = "id")
     var formItem: FormItemEntity? = null

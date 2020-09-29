@@ -15,8 +15,8 @@ data class FormValueOfCheck(
         var ckName: String,
         var ckValue: String = ckName,
         var ckChecked: Boolean = false
-) : AbsValue{
-
+) : AbsValue {
+    override val valueType: Int = 2
     override fun json(): String {
         return Gson().toJson(this)
     }

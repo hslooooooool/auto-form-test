@@ -4,5 +4,6 @@ package vip.qsos.autoform.model.db
  * @author : 华清松
  */
 interface AbsValue {
-    fun json(): String
+    val valueType: Int
+    fun json(): String?
 }

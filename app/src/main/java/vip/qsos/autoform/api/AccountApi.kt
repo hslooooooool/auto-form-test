@@ -12,19 +12,15 @@ import vip.qsos.autoform.model.BaseResult
 
 @Api(tags = ["消息账号"])
 @ApiSort(1)
-@RequestMapping("/api/im/account")
+@RequestMapping("/api/form")
 interface AccountApi {
 
-    @ApiOperation(value = "分配账号")
-    @GetMapping("/assign")
-    fun assign(): BaseResult
-
-    @ApiOperation(value = "账号列表")
-    @GetMapping("/list")
-    fun list(
+    @ApiOperation(value = "获取表单案例")
+    @GetMapping("/demo")
+    fun demo(
             @RequestParam
-            @ApiParam(value = "账号是否被使用", required = false, defaultValue = "true", type = "Boolean")
-            used: Boolean? = null
+            @ApiParam(value = "表单场景", required = false, defaultValue = "true", type = "String")
+            type: String? = null
     ): BaseResult
 
     @ApiOperation(value = "账号生成")

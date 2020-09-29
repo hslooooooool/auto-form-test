@@ -14,7 +14,7 @@ data class FormValueOfTime(
         var timeLimitMin: Long = 0L,
         var timeLimitMax: Long = 0L
 ) : AbsValue {
-
+    override val valueType: Int = 3
     override fun json(): String {
         return Gson().toJson(this)
     }

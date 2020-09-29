@@ -1,5 +1,6 @@
 package vip.qsos.autoform.api
 
+import com.google.gson.Gson
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
@@ -40,8 +41,8 @@ open class TestRedisUtil {
                     println("表单创建完成，表单项值-${it.title}，ID=${v.id}")
                 }
             }
+            println("表单数据：\n\n" + Gson().toJson(this) + "\n\n")
         }
-
     }
 
 }

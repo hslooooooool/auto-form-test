@@ -5,7 +5,7 @@ spring:
     show-sql: true
     hibernate:
       # FIXME create update
-      ddl-auto: update
+      ddl-auto: create
     database-platform: org.hibernate.dialect.ProgressDialect
     properties:
       hibernate:

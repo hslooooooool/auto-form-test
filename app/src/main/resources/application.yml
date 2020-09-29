@@ -22,3 +22,11 @@ spring:
       charset: UTF-8
       force: true
       enabled: true
+
+  thymeleaf:
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    cache: false

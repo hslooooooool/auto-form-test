@@ -16,7 +16,7 @@ data class FormValueOfUser(
         var userDesc: String = "",
         var userAvatar: String? = null
 ) : AbsValue {
-
+    override val valueType: Int = 4
     override fun json(): String {
         return Gson().toJson(this)
     }

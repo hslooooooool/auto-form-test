@@ -1,7 +1,7 @@
 package vip.qsos.autoform.data_jpa.table
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import java.time.LocalDateTime
+import java.util.*
 import javax.persistence.Column
 import javax.persistence.MappedSuperclass
 
@@ -13,11 +13,11 @@ import javax.persistence.MappedSuperclass
 abstract class AbsTable(
         @JsonIgnore
         @Column(name = "gmt_create", nullable = false)
-        var gmtCreate: LocalDateTime = LocalDateTime.now(),
+        var gmtCreate: Date = Date(),
 
         @JsonIgnore
         @Column(name = "gmt_update", nullable = false)
-        var gmtUpdate: LocalDateTime = LocalDateTime.now(),
+        var gmtUpdate: Date = Date(),
 
         @JsonIgnore
         @Column(name = "deleted", nullable = false)

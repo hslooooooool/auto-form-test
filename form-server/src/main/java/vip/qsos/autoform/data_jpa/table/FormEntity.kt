@@ -7,7 +7,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "form")
 @ApiModel(value = "表单表")
-class FormEntity {
+class FormEntity : AbsTable {
     constructor()
 
     /**

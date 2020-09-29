@@ -1,9 +1,6 @@
 package vip.qsos.autoform.utils
 
-import vip.qsos.autoform.data_jpa.model.FormValueOfCheck
-import vip.qsos.autoform.data_jpa.model.FormValueOfFile
-import vip.qsos.autoform.data_jpa.model.FormValueOfText
-import vip.qsos.autoform.data_jpa.model.FormValueOfTime
+import vip.qsos.autoform.data_jpa.model.*
 import vip.qsos.autoform.data_jpa.table.FormEntity
 import vip.qsos.autoform.data_jpa.table.FormItemEntity
 
@@ -11,6 +8,7 @@ import vip.qsos.autoform.data_jpa.table.FormItemEntity
  * @author : 华清松
  */
 object FormVerifyUtils {
+
     /**校验信息*/
     class Verify {
         var pass = true
@@ -75,7 +73,7 @@ object FormVerifyUtils {
         formItem.formValues.forEachIndexed { index, formValue ->
             if (verify.pass) {
                 verify.info.valueIndex = index
-                val v = formValue.value as FormValueOfText
+                val v = formValue.value as FormValueOfInput
                 val content = v.content?.trim()
                 /*判断文字是否为空*/
                 if (formItem.require && content?.trim().isNullOrEmpty()) {

@@ -46,7 +46,7 @@ object FormDemoUtils {
             /**内容*/
             val content1 = FormItemEntity(title = "内容举例1", notice = "请填写内容，必填",
                     valueType = 1, limitMin = 5, limitMax = 100, require = true)
-            val contentValue1 = FormValueEntity(value = FormValueOfText())
+            val contentValue1 = FormValueEntity(value = FormValueOfInput())
             content1.formValues = arrayListOf(contentValue1)
             formItemList.add(content1)
 
