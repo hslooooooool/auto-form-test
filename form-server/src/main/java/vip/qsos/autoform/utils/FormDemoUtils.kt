@@ -13,7 +13,7 @@ object FormDemoUtils {
         /**反馈表单*/
         fun feedbackForm(): FormEntity {
             val form = FormEntity(
-                    title = "表单案例",
+                    title = "表单案例DEMO",
                     notice = "这是一个表单填写案例",
                     submitter = "单元测试",
                     sceneType = "单元测试",

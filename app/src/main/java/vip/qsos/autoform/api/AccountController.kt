@@ -13,7 +13,7 @@ class AccountController : AccountApi {
     }
 
     override fun init(size: Int): BaseResult {
-
         return BaseResult.data(data = "")
     }
+
 }

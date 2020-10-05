@@ -1,6 +1,7 @@
 package vip.qsos.autoform.utils
 
 import com.google.gson.Gson
+import com.google.gson.JsonParseException
 import vip.qsos.autoform.data_jpa.model.*
 import vip.qsos.autoform.model.db.AbsValue
 
@@ -20,7 +21,7 @@ object FormTransUtils {
                     4 -> FormValueOfUser::class.java
                     5 -> FormValueOfFile::class.java
                     6 -> FormValueOfLocation::class.java
-                    else -> FormValueOfText::class.java
+                    else -> throw JsonParseException("表单项类型不存在")
                 })
     }
 }

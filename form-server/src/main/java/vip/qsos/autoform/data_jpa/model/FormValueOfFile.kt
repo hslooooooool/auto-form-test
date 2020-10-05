@@ -9,17 +9,15 @@ import java.util.*
  * @param fileId 文件ID
  * @param fileName 文件名称
  * @param fileType 文件类型 IMAGE, VIDEO, AUDIO, FILE
- * @param filePath 文件本地路径地址，如/0/data/app1/logo.png
  * @param fileUrl 文件服务器路径地址，如http://qsos.vip/file/logo.png
  * @param fileCover 文件封面地址，如http://qsos.vip/file/logo.png或/0/data/app1/logo.png
  * */
-data class FormValueOfFile(
+data class FormValueOfFile constructor(
         var fileId: String? = null,
         var fileName: String = "",
         var fileType: Type = Type.FILE,
-        var filePath: String? = null,
-        var fileUrl: String? = filePath,
-        var fileCover: String? = filePath ?: fileUrl
+        var fileUrl: String? = null,
+        var fileCover: String? = null
 ) : AbsValue {
     override val valueType: Int = 5
     override fun json(): String {
