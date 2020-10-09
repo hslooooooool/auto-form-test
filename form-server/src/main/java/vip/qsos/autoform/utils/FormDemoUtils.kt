@@ -10,8 +10,9 @@ object FormDemoUtils {
 
     /**创建一个表单Demo*/
     object Create {
-        /**反馈表单*/
-        fun feedbackForm(): FormEntity {
+
+        /**表单案例*/
+        fun demo(): FormEntity {
             val form = FormEntity(
                     title = "表单案例DEMO",
                     notice = "这是一个表单填写案例",
@@ -196,6 +197,250 @@ object FormDemoUtils {
             form.formItems = formItemList
             return form
         }
+
+        /**常规信息*/
+        fun normal(): FormEntity {
+            val form = FormEntity(
+                    title = "常规信息填报",
+                    notice = "您可以通过常规信息上报其它信息",
+                    submitter = "单元测试",
+                    sceneType = "1",
+                    editable = true
+            )
+            val formItemList = arrayListOf<FormItemEntity>()
+
+            /**上报单位*/
+            val desc1 = FormItemEntity(title = "上报单位", notice = "单元测试",
+                    valueType = 0, editable = false)
+            val descValue1 = FormValueEntity(
+                    value = FormValueOfText("单元测试单位")
+            )
+            descValue1.editable = false
+            desc1.formValues = arrayListOf(descValue1)
+            formItemList.add(desc1)
+
+            /**信息标题*/
+            val content1 = FormItemEntity(title = "信息标题", notice = "请填写内容，必填",
+                    valueType = 1, limitMin = 3, limitMax = 30, require = true)
+            val contentValue1 = FormValueEntity(value = FormValueOfInput())
+            content1.formValues = arrayListOf(contentValue1)
+            formItemList.add(content1)
+
+            /**信息等级*/
+            val state1 = FormItemEntity(title = "信息等级", notice = "信息等级选择,必选",
+                    valueType = 2, limitMin = 1, limitMax = 1, require = true)
+            val state1FormValues = arrayListOf<FormValueEntity>()
+            arrayListOf("一般", "重要", "紧急", "特急").forEachIndexed { index, s ->
+                val stateValue = FormValueEntity(
+                        position = index,
+                        value = FormValueOfCheck("$index", s, s, index == 0)
+                )
+                state1FormValues.add(stateValue)
+            }
+            state1.formValues = state1FormValues
+            state1.formValues.sortedBy { it.position }
+            formItemList.add(state1)
+
+            /**上报内容*/
+            val content2 = FormItemEntity(title = "上报内容", notice = "请填写内容，必填",
+                    valueType = 1, limitMin = 3, limitMax = 200, require = true)
+            formItemList.add(content2)
+
+            /**附件上传*/
+            val file2 = FormItemEntity(title = "附件上传", notice = "所有文件",
+                    valueType = 5, limitMin = 0, limitMax = 9, limitFormat = "FILE")
+            formItemList.add(file2)
+
+            form.formItems = formItemList
+            return form
+        }
+
+        /**每日平安信息*/
+        fun safety(): FormEntity {
+            val form = FormEntity(
+                    title = "每日平安信息填报",
+                    submitter = "单元测试",
+                    sceneType = "2",
+                    editable = true
+            )
+            val formItemList = arrayListOf<FormItemEntity>()
+
+            /**上报单位*/
+            val desc1 = FormItemEntity(title = "上报单位", valueType = 0, editable = false)
+            val descValue1 = FormValueEntity(
+                    value = FormValueOfText("单元测试单位")
+            )
+            descValue1.editable = false
+            desc1.formValues = arrayListOf(descValue1)
+            formItemList.add(desc1)
+
+            /**是否安全*/
+            val state1 = FormItemEntity(title = "是否安全", notice = "是否安全选择,必选",
+                    valueType = 2, limitMin = 1, limitMax = 1, require = true)
+            val state1FormValues = arrayListOf<FormValueEntity>()
+            arrayListOf("是", "否").forEachIndexed { index, s ->
+                val stateValue = FormValueEntity(
+                        position = index,
+                        value = FormValueOfCheck("$index", s, s, index == 0)
+                )
+                state1FormValues.add(stateValue)
+            }
+            state1.formValues = state1FormValues
+            state1.formValues.sortedBy { it.position }
+            formItemList.add(state1)
+
+            /**上报内容*/
+            val content1 = FormItemEntity(title = "上报内容", notice = "请填写上报内容，必填",
+                    valueType = 1, limitMin = 3, limitMax = 30, require = true)
+            val contentValue1 = FormValueEntity(value = FormValueOfInput())
+            content1.formValues = arrayListOf(contentValue1)
+            formItemList.add(content1)
+
+            /**附件上传*/
+            val file2 = FormItemEntity(title = "附件上传", notice = "所有文件",
+                    valueType = 5, limitMin = 0, limitMax = 9, limitFormat = "FILE")
+            formItemList.add(file2)
+
+            form.formItems = formItemList
+            return form
+        }
+
+        /**每日消防信息*/
+        fun fireControl(content: String): FormEntity {
+            val form = FormEntity(
+                    title = "每日消防信息填报",
+                    submitter = "单元测试",
+                    sceneType = "3",
+                    editable = true
+            )
+            val formItemList = arrayListOf<FormItemEntity>()
+
+            /**上报单位*/
+            val desc1 = FormItemEntity(title = "上报单位", valueType = 0, editable = false)
+            val descValue1 = FormValueEntity(
+                    value = FormValueOfText("单元测试单位")
+            )
+            descValue1.editable = false
+            desc1.formValues = arrayListOf(descValue1)
+            formItemList.add(desc1)
+
+            /**信息标题*/
+            val title1 = FormItemEntity(title = "信息标题", valueType = 0, editable = false)
+            val title1Value1 = FormValueEntity(value = FormValueOfText(content))
+            title1Value1.editable = false
+            title1.formValues = arrayListOf(title1Value1)
+            formItemList.add(title1)
+
+            /**消防要情*/
+            val content1 = FormItemEntity(title = "消防要情", notice = "请填写消防要情，选填",
+                    valueType = 1, limitMin = 0, limitMax = 300, require = false)
+            val contentValue1 = FormValueEntity(value = FormValueOfInput())
+            content1.formValues = arrayListOf(contentValue1)
+            formItemList.add(content1)
+
+            /**工作动态*/
+            val content2 = FormItemEntity(title = "工作动态", notice = "请填写工作动态，选填",
+                    valueType = 1, limitMin = 0, limitMax = 300, require = false)
+            val contentValue2 = FormValueEntity(value = FormValueOfInput())
+            content2.formValues = arrayListOf(contentValue2)
+            formItemList.add(content2)
+
+            /**节日（安保）综合情况*/
+            val content3 = FormItemEntity(title = "节日（安保）综合情况", notice = "请填写节日（安保）综合情况，选填",
+                    valueType = 1, limitMin = 0, limitMax = 300, require = false)
+            val contentValue3 = FormValueEntity(value = FormValueOfInput())
+            content3.formValues = arrayListOf(contentValue3)
+            formItemList.add(content3)
+
+            /**附件上传*/
+            val file2 = FormItemEntity(title = "附件上传", notice = "所有文件",
+                    valueType = 5, limitMin = 0, limitMax = 9, limitFormat = "FILE")
+            formItemList.add(file2)
+
+            form.formItems = formItemList
+            return form
+        }
+
+        /**每周工作信息*/
+        fun weekWork(content: String): FormEntity {
+            val form = FormEntity(
+                    title = "每周工作信息填报",
+                    notice = "各指挥中心主任要严格审核把关，报送内容要简明扼要、突出重点，经常性工作无需上报，每个部分不超过100字，如无可不填，突出情况可单独上报",
+                    submitter = "单元测试",
+                    sceneType = "4",
+                    editable = true
+            )
+            val formItemList = arrayListOf<FormItemEntity>()
+
+            /**上报单位*/
+            val desc1 = FormItemEntity(title = "上报单位", valueType = 0, editable = false)
+            val descValue1 = FormValueEntity(
+                    value = FormValueOfText("单元测试单位")
+            )
+            descValue1.editable = false
+            desc1.formValues = arrayListOf(descValue1)
+            formItemList.add(desc1)
+
+            /**信息标题*/
+            val title1 = FormItemEntity(title = "信息标题", valueType = 0, editable = false)
+            val title1Value1 = FormValueEntity(value = FormValueOfText(content))
+            title1Value1.editable = false
+            title1.formValues = arrayListOf(title1Value1)
+            formItemList.add(title1)
+
+            /**应急值守*/
+            val content1 = FormItemEntity(title = "应急值守", notice = "请填写应急值守内容（分析预警、舆情监控、信息报送、态势标绘、视频督导、重大活动安保等），选填",
+                    valueType = 1, limitMin = 0, limitMax = 100, require = false)
+            val contentValue1 = FormValueEntity(value = FormValueOfInput())
+            content1.formValues = arrayListOf(contentValue1)
+            formItemList.add(content1)
+
+            /**调度指挥*/
+            val content2 = FormItemEntity(title = "调度指挥", notice = "请填写调度指挥（重要灾情、调度指挥、接警调度、辅助决策、跨区域增援调度等），选填",
+                    valueType = 1, limitMin = 0, limitMax = 100, require = false)
+            val contentValue2 = FormValueEntity(value = FormValueOfInput())
+            content2.formValues = arrayListOf(contentValue2)
+            formItemList.add(content2)
+
+            /**岗位练兵*/
+            val content3 = FormItemEntity(title = "岗位练兵", notice = "请填写岗位练兵（岗位练兵开展情况，包括业务培训、大讲堂、比武、复盘演练等），选填",
+                    valueType = 1, limitMin = 0, limitMax = 100, require = false)
+            val contentValue3 = FormValueEntity(value = FormValueOfInput())
+            content3.formValues = arrayListOf(contentValue3)
+            formItemList.add(content3)
+
+            /**制度规范*/
+            val content4 = FormItemEntity(title = "制度规范", notice = "请填写制度规范（制定标准规范、印发文件规定、应急联动、值班值守等机制），选填",
+                    valueType = 1, limitMin = 0, limitMax = 100, require = false)
+            val contentValue4 = FormValueEntity(value = FormValueOfInput())
+            content4.formValues = arrayListOf(contentValue4)
+            formItemList.add(content4)
+
+            /**业务研究*/
+            val content5 = FormItemEntity(title = "业务研究", notice = "请填写业务研究（“十四五”规划、调研座谈、智能接处警系统、信息报送系统、正规化建设、改造扩建、亮点创新等），选填",
+                    valueType = 1, limitMin = 0, limitMax = 100, require = false)
+            val contentValue5 = FormValueEntity(value = FormValueOfInput())
+            content5.formValues = arrayListOf(contentValue5)
+            formItemList.add(content5)
+
+            /**其他事项*/
+            val content6 = FormItemEntity(title = "其他事项", notice = "请填写其他事项（领导视察慰问、重要批示、重大事项报告、上级交办等），选填",
+                    valueType = 1, limitMin = 0, limitMax = 100, require = false)
+            val contentValue6 = FormValueEntity(value = FormValueOfInput())
+            content6.formValues = arrayListOf(contentValue6)
+            formItemList.add(content6)
+
+            /**下周工作*/
+            val content7 = FormItemEntity(title = "下周工作", notice = "请填写下周工作，选填",
+                    valueType = 1, limitMin = 0, limitMax = 100, require = false)
+            val contentValue7 = FormValueEntity(value = FormValueOfInput())
+            content7.formValues = arrayListOf(contentValue7)
+            formItemList.add(content6)
+
+            form.formItems = formItemList
+            return form
+        }
+
     }
 
 }

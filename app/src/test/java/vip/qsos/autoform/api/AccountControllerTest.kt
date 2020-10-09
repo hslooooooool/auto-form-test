@@ -32,7 +32,7 @@ open class TestRedisUtil {
     @Test
     @Transactional
     open fun create() {
-        val form = FormDemoUtils.Create.feedbackForm()
+        val form = FormDemoUtils.Create.demo()
         mTableFormRepository.save(form).apply {
             println("表单创建完成，表单-${this.title}，ID=${this.id}")
             this.formItems.forEach {
