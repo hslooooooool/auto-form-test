@@ -8,7 +8,7 @@ im-netty-server.iml
 im-lib/target/
 im-server/target/
 app/lib/
-im-sdk-netty/target/
+../target/
 /.settings/
 /.vscode/
 .project
