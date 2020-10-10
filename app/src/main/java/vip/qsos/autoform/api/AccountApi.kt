@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import vip.qsos.autoform.model.BaseResult
 
-@Api(tags = ["消息账号"])
+@Api(tags = ["表单案例"])
 @ApiSort(1)
 @RequestMapping("/api/form")
 interface AccountApi {
@@ -18,7 +18,7 @@ interface AccountApi {
     @GetMapping("/demo")
     fun demo(
             @RequestParam
-            @ApiParam(value = "表单场景", name = "sceneType", required = false, defaultValue = "1", type = "String")
+            @ApiParam(value = "表单场景，0：案例1：常规信息2：每日平安3：每日消防4：每周工作", name = "sceneType", required = false, defaultValue = "0", type = "String")
             sceneType: String? = null
     ): BaseResult
 
