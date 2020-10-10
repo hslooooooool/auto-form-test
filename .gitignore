@@ -3,7 +3,6 @@
 *.iml
 app/app.iml
 /.settings/
-/.vscode/
 .project
 /app/target/
 form-server/target/
