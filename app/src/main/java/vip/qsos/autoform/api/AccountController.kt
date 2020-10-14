@@ -19,6 +19,7 @@ class AccountController : AccountApi {
             "4" -> FormDemoUtils.Create.weekWork(
                     "测试单位每周工作信息（${LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))}）"
             )
+            "5" -> FormDemoUtils.Create.sheet()
             else -> FormDemoUtils.Create.demo()
         }
 

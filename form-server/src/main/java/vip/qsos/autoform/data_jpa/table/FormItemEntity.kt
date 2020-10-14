@@ -15,7 +15,7 @@ class FormItemEntity : AbsTable {
     /**
      * @param title 表单项名称
      * @param notice 表单项提示内容
-     * @param valueType 表单项值类型，如：0：文本展示；1：输入；2：选项；3：时间；4：人员；5：文件；6：位置
+     * @param valueType 表单项值类型，如：0：文本展示；1：输入；2：选项；3：时间；4：人员；5：文件；6：位置；7：表格
      * @param editable 表单项是否可编辑
      * @param position 表单项顺序
      * @param visible 表单项是否显示

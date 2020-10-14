@@ -54,6 +54,8 @@ object FormDemoUtils {
             /**内容*/
             val content2 = FormItemEntity(title = "内容举例2", notice = "请填写内容，非必填",
                     valueType = 1, limitMin = 0, limitMax = 200, require = false)
+            val contentValue2 = FormValueEntity(value = FormValueOfInput())
+            content2.formValues = arrayListOf(contentValue2)
             formItemList.add(content2)
 
             /**单选举例*/
@@ -436,6 +438,97 @@ object FormDemoUtils {
             val contentValue7 = FormValueEntity(value = FormValueOfInput())
             content7.formValues = arrayListOf(contentValue7)
             formItemList.add(content6)
+
+            form.formItems = formItemList
+            return form
+        }
+
+        /**表格测试*/
+        fun sheet(): FormEntity {
+            val form = FormEntity(
+                    title = "表格信息填报",
+                    notice = "具备表格形式填写的表单",
+                    submitter = "单元测试",
+                    sceneType = "5",
+                    editable = true
+            )
+            val formItemList = arrayListOf<FormItemEntity>()
+
+            /**上报单位*/
+            val desc1 = FormItemEntity(title = "上报单位", valueType = 0, editable = false)
+            val descValue1 = FormValueEntity(
+                    value = FormValueOfText("单元测试单位")
+            )
+            descValue1.editable = false
+            desc1.formValues = arrayListOf(descValue1)
+            formItemList.add(desc1)
+
+            /**1级表格填写*/
+            val content1 = FormItemEntity(title = "1级表格填写", notice = "1级组合填写",
+                    valueType = 7, limitMin = 0, limitMax = 0, require = false)
+
+            val sheet1 = FormValueOfSheet("标头1", "1", sheetType = -1)
+            val sheet11 = FormValueOfSheet("标头11", "1-1", sheetType = 0)
+            val sheet12 = FormValueOfSheet("标头12", "1-2", sheetType = 0)
+            val sheet13 = FormValueOfSheet("标头13", "1-3", sheetType = 0)
+            val sheet14 = FormValueOfSheet("标头14", "1-4", sheetType = 0)
+
+            val contentValue1 = FormValueEntity(value = sheet1)
+            val contentValue11 = FormValueEntity(value = sheet11)
+            val contentValue12 = FormValueEntity(value = sheet12)
+            val contentValue13 = FormValueEntity(value = sheet13)
+            val contentValue14 = FormValueEntity(value = sheet14)
+            content1.formValues = arrayListOf(contentValue1, contentValue11, contentValue12, contentValue13, contentValue14)
+            formItemList.add(content1)
+
+            /**2级表格填写*/
+            val content2 = FormItemEntity(title = "2级表格填写", notice = "2级组合填写",
+                    valueType = 7, limitMin = 0, limitMax = 0, require = false)
+
+            val sheet21 = FormValueOfSheet("标头1", "1", sheetType = -1)
+            val sheet211 = FormValueOfSheet("标头11", "1-1", sheetType = 0)
+            val sheet212 = FormValueOfSheet("标头12", "1-2", sheetType = -1)
+            val sheet2121 = FormValueOfSheet("标头121", "1-2-1", sheetType = 0)
+            val sheet2122 = FormValueOfSheet("标头122", "1-2-2", sheetType = 0)
+            val sheet2123 = FormValueOfSheet("标头123", "1-2-3", sheetType = 0)
+
+            val contentValue21 = FormValueEntity(value = sheet21)
+            val contentValue211 = FormValueEntity(value = sheet211)
+            val contentValue212 = FormValueEntity(value = sheet212)
+            val contentValue2121 = FormValueEntity(value = sheet2121)
+            val contentValue2122 = FormValueEntity(value = sheet2122)
+            val contentValue2123 = FormValueEntity(value = sheet2123)
+            content2.formValues = arrayListOf(contentValue21, contentValue211, contentValue212, contentValue2121, contentValue2122, contentValue2123)
+            formItemList.add(content2)
+
+            /**3级表格填写*/
+            val content3 = FormItemEntity(title = "3级表格填写", notice = "3级组合填写",
+                    valueType = 7, limitMin = 0, limitMax = 0, require = false)
+
+            val sheet321 = FormValueOfSheet("标头1", "1", sheetType = -1)
+            val sheet3211 = FormValueOfSheet("标头11", "1-1", sheetType = 0)
+            val sheet3212 = FormValueOfSheet("标头12", "1-2", sheetType = -1)
+            val sheet32121 = FormValueOfSheet("标头121", "1-2-1", sheetType = 0)
+            val sheet32122 = FormValueOfSheet("标头122", "1-2-2", sheetType = -1)
+            val sheet321221 = FormValueOfSheet("标头1221", "1-2-2-1", sheetType = 0)
+            val sheet321222 = FormValueOfSheet("标头1222", "1-2-2-2", sheetType = 0)
+
+            val contentValue321 = FormValueEntity(value = sheet321)
+            val contentValue3211 = FormValueEntity(value = sheet3211)
+            val contentValue3212 = FormValueEntity(value = sheet3212)
+            val contentValue32121 = FormValueEntity(value = sheet32121)
+            val contentValue32122 = FormValueEntity(value = sheet32122)
+            val contentValue321221 = FormValueEntity(value = sheet321221)
+            val contentValue321222 = FormValueEntity(value = sheet321222)
+            content3.formValues = arrayListOf(contentValue321, contentValue3211, contentValue3212, contentValue32121, contentValue32122, contentValue321221, contentValue321222)
+            formItemList.add(content3)
+
+            /**测试文本*/
+            val content5 = FormItemEntity(title = "测试文本", notice = "测试文本，选填",
+                    valueType = 1, limitMin = 0, limitMax = 100, require = false)
+            val contentValue5 = FormValueEntity(value = FormValueOfInput())
+            content5.formValues = arrayListOf(contentValue5)
+            formItemList.add(content5)
 
             form.formItems = formItemList
             return form
