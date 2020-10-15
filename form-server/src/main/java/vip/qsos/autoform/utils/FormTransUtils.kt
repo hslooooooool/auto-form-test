@@ -21,6 +21,7 @@ object FormTransUtils {
                     4 -> FormValueOfUser::class.java
                     5 -> FormValueOfFile::class.java
                     6 -> FormValueOfLocation::class.java
+                    7 -> FormValueOfSheet::class.java
                     else -> throw JsonParseException("表单项类型不存在")
                 })
     }
